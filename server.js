@@ -49,7 +49,7 @@ app.post('/signin', (req, res) => {
 app.post('/register', (req, res) => {
     const { email, name, password } = req.body; //destructering
     bcrypt.hash(password, 8,  function(err, hash) {
-        console.log(hash);
+        console.log(hash);//why not working?? :c
     })
  
     database.users.push({
