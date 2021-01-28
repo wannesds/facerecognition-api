@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 
 const app = express();
+
 app.use(express.json());
 
 const database = {
@@ -47,8 +48,9 @@ app.post('/signin', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-    const { email, name, password } = req.body; //destructering
-    bcrypt.hash(password, 8,  function(err, hash) {
+    const { email, password, name } = req.body; //destructering
+
+    bcrypt.hash(password, 10,  function(err, hash) {
         console.log(hash);//why not working?? :c
     })
  
