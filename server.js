@@ -1,11 +1,13 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
+import cors from 'cors';
 
 
 const app = express();
 
 
 app.use(express.json());
+app.use(cors());
 
 const database = {
     users: [
@@ -50,17 +52,9 @@ app.post('/signin', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-    const { email, password, name } = req.body; //destructering
+    const { email, name, password } = req.body; //destructering
 
-    bcrypt.hash(password, 10,  function(err, hash) {
-        console.log(hash);//why not working?? :c
-    }) 
-
-    // bcrypt.genSalt(10, function(err, salt) {
-    //     bcrypt.hash(password, salt, function(err, hash) {
-    //         console.log(hash)
-    //     });
-    // });
+    console.log(hash);
  
     database.users.push({
         id: '125',
@@ -71,6 +65,7 @@ app.post('/register', (req, res) => {
         joined: new Date()
     })
     res.json(database.users[database.users.length-1]);
+    //sends the newly added data back
 })
 
 app.get('/profile/:id', (req, res) => {
@@ -89,6 +84,7 @@ app.get('/profile/:id', (req, res) => {
 
 app.put('/image', (req, res) => {
     const { id } = req.body;
+
     let found = false;
     database.users.forEach(user => {
         if(user.id === id) {
