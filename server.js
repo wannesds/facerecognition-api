@@ -1,7 +1,9 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 
+
 const app = express();
+
 
 app.use(express.json());
 
@@ -52,7 +54,13 @@ app.post('/register', (req, res) => {
 
     bcrypt.hash(password, 10,  function(err, hash) {
         console.log(hash);//why not working?? :c
-    })
+    }) 
+
+    // bcrypt.genSalt(10, function(err, salt) {
+    //     bcrypt.hash(password, salt, function(err, hash) {
+    //         console.log(hash)
+    //     });
+    // });
  
     database.users.push({
         id: '125',
