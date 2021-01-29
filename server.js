@@ -52,15 +52,14 @@ app.post('/signin', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-    const { email, name, password } = req.body; //destructering
+    const { email, password, name } = req.body; //destructering
 
-    console.log(hash);
+    //console.log(hash);
  
     database.users.push({
         id: '125',
         name: name,
         email: email,
-        password: password,
         entries: 0,
         joined: new Date()
     })
