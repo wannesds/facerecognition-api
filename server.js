@@ -12,7 +12,7 @@ app.use(cors());
 const database = {
     users: [
         {
-            id: '123',
+            id: '1',
             name: 'John',
             email: 'john@mail.com',
             password: 'cookies',
@@ -20,7 +20,7 @@ const database = {
             joined: new Date()
         },
         {
-            id: '124',
+            id: '2',
             name: 'Sally',
             email: 'sally@mail.com',
             password: 'candies',
@@ -41,27 +41,31 @@ app.get('/', (req, res) => {
     res.send(database.users);
 })
 
-app.post('/signin', (req, res) => {
-    if(req.body.email === database.users[0].email && 
-        req.body.password === database.users[0].password) {
-        res.json(database.users[0]);
-    } else {
-        res.status(400).json('error logging in');
-    } 
+app.put('/signin', (req, res) => {
+    const { email, password } = req.body;
+        if(email === database.users[0].email && 
+            password === database.users[0].password) {
+            res.json(database.users[0]);
+        } else {
+            res.status(400).json('error logging in');
+        }
+
 })
 
-app.post('/register', (req, res) => {
+app.put('/register', (req, res) => {
     const { email, password, name } = req.body; //destructering
+    //const hash = bcrypt.hashSync(password, 10);
 
-    //console.log(hash);
- 
     database.users.push({
-        id: '125',
+        id: database.users.length+1,
         name: name,
         email: email,
+        password: password,
         entries: 0,
         joined: new Date()
     })
+    
+ 
     res.json(database.users[database.users.length-1]);
     //sends the newly added data back
 })
@@ -86,6 +90,7 @@ app.put('/image', (req, res) => {
     let found = false;
     database.users.forEach(user => {
         if(user.id === id) {
+            found === true;
             user.entries++
             return res.json(user.entries);
         }
