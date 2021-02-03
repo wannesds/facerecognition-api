@@ -3,8 +3,9 @@ import bcrypt from 'bcryptjs';
 import cors from 'cors';
 import knex from 'knex';
 
+
 import handleRegister from './controllers/register.js';
-import handleEntries from './controllers/entries.js';
+import handleImage from './controllers/image.js';
 import handleProfile from './controllers/profile.js';
 import handleSignIn from './controllers/signIn.js';
 
@@ -31,7 +32,8 @@ app.get('/', (req, res) => { res.send('succes'); })
 app.get('/profile/:id', handleProfile(db))
 app.put('/signin',  handleSignIn(db, bcrypt))
 app.put('/register', handleRegister(db, bcrypt))
-app.put('/image', handleEntries(db))
+app.put('/image', (req, res) => {handleImage.handleEntries(req, res, db)} )
+app.post('/imageurl', (req, res) => {handleImage.handleApiCall(req, res)})
 // = app.put('/image', (req, res) => { handleEntries(req, res, db) })
 // (req, res) gets auto added and called back in file
 
