@@ -1,4 +1,4 @@
-const profileId = (req, res, db) => {
+const handleProfile = (db) => (req, res) => {
     const { id } = req.params;
     let found = false;
     db.select('*').from('users').where({id})
@@ -12,4 +12,4 @@ const profileId = (req, res, db) => {
         .catch(err => res.status(400).json('error getting user'))
 }
 
-export default profileId;
+export default handleProfile;
