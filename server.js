@@ -33,7 +33,7 @@ app.get('/profile/:id', handleProfile(db))
 app.put('/signin',  handleSignIn(db, bcrypt))
 app.put('/register', handleRegister(db, bcrypt))
 app.put('/image', (req, res) => {handleImage.handleEntries(req, res, db)} )
-app.post('/imageurl', (req, res) => {handleImage.handleApiCall(req, res)})
+app.put('/imageurl', (req, res) => {handleImage.handleApiCall(req, res)})
 // = app.put('/image', (req, res) => { handleEntries(req, res, db) })
 // (req, res) gets auto added and called back in file
 
