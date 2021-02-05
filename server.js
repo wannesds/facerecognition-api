@@ -9,6 +9,7 @@ import handleImage from './controllers/image.js';
 import handleProfile from './controllers/profile.js';
 import handleSignIn from './controllers/signIn.js';
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 
 const app = express();
 const db = knex({
