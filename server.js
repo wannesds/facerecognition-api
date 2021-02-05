@@ -24,9 +24,9 @@ const db = knex({
 app.use(express.json());
 app.use(cors());
 
-db.select('*').from('users').then(data => {
-    console.log(data);
-});
+// db.select('*').from('users').then(data => {
+//     console.log(data);
+// });
 app.get('/', (req, res) => { res.send('succes'); })
 
 app.get('/profile/:id', handleProfile(db))
