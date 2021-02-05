@@ -12,6 +12,10 @@ import handleSignIn from './controllers/signIn.js';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 
 const app = express();
+
+app.use(express.json());
+app.use(cors());
+
 const db = knex({
     client: 'pg',
     connection: {
@@ -22,8 +26,7 @@ const db = knex({
     }
 });
 
-app.use(express.json());
-app.use(cors());
+
 
 // db.select('*').from('users').then(data => {
 //     console.log(data);
