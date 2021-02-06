@@ -4,10 +4,10 @@ import cors from 'cors';
 import knex from 'knex';
 
 
-import handleRegister from './controllers/register.mjs';
-import handleImage from './controllers/image.mjs';
-import handleProfile from './controllers/profile.mjs';
-import handleSignIn from './controllers/signIn.mjs';
+import handleRegister from './controllers/register.js';
+import handleImage from './controllers/image.js';
+import handleProfile from './controllers/profile.js';
+import handleSignIn from './controllers/signIn.js';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 
