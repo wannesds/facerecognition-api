@@ -31,8 +31,8 @@ app.use(express.json());
 app.get('/', (req, res) => { res.send('succes'); })
 
 app.get('/profile/:id', handleProfile(db))
-app.post('/signin',  handleSignIn(db, bcrypt))
-app.post('/register', handleRegister(db, bcrypt))
+app.put('/signin',  handleSignIn(db, bcrypt))
+app.put('/register', handleRegister(db, bcrypt))
 app.post('/image', (req, res) => {handleImage.handleEntries(req, res, db)} )
 app.post('/imageurl', (req, res) => {handleImage.handleApiCall(req, res)})
 // = app.put('/image', (req, res) => { handleEntries(req, res, db) })
