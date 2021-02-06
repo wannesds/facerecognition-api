@@ -2,10 +2,10 @@
   "name": "facerecognition-api",
   "version": "1.0.0",
   "description": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "main": "script.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:dev" : "nodemon server.js"
   },
   "author": "Wannes Dieltiens",
   "license": "ISC",
